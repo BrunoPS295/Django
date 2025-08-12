@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+p{
+    color: blue;
+    text-align: center;
+}
+
+li a {
+    color: green;
+}
+
+body {
+    background: white url(images/download.png) no-repeat center;
+}
