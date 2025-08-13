@@ -8,7 +8,7 @@ def criar_aluno(request):
         form = AlunoForm(request.POST)
         if form.is_valid():
             aluno = form.save()
-            return redirect("nota:aluno_detail", pk=aluno.pk)
+            return redirect("nota:listar_alunos")
     else:
         form = AlunoForm()
     return render(request, "nota/criar_aluno.html", {"form": form})

@@ -1,6 +1,7 @@
 <!doctype html>
+{% load static %}
 <html>
-<head><meta charset="utf-8"><title>Alunos</title></head>
+<head><meta charset="utf-8"><title>Alunos</title><link rel="stylesheet" href="{% static 'nota/listar.css' %}"></head>
 <body>
   <h1>Alunos</h1>
   <p><a href="{% url 'nota:criar_aluno' %}">Criar novo aluno</a></p>
@@ -12,29 +13,18 @@
             <td>Nota 2</td>
             <td>Média</td>
         </tr>
+        {% for aluno in alunos %}
         <tr>
-            {% for aluno in alunos %}
-            <td>Nome</td>
-                <li>
-                    <a href="{% url 'nota:aluno_detail' aluno.pk %}">{{ aluno.nome }}</a>
-                    n1= {{ aluno.nota1 }} n2= {{ aluno.nota2 }} média= {{ aluno.media|floatformat:2 }}
-                </li>
-            {% empty %}
-                <li>Nenhum aluno cadastrado.</li>
-            {% endfor %}
-            <td>Nome</td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.nota1 }}</td>
+            <td>{{ aluno.nota2 }}</td>
+            <td>{{ aluno.media|floatformat:1 }}</td>
         </tr>
+        {% empty %}
+            <li>Nenhum aluno cadastrado.</li>
+        {% endfor %}
     </tbody>
   </table>
-  <ul>
-    {% for aluno in alunos %}
-      <li>
-        <a href="{% url 'nota:aluno_detail' aluno.pk %}">{{ aluno.nome }}</a>
-        n1= {{ aluno.nota1 }} n2= {{ aluno.nota2 }} média= {{ aluno.media|floatformat:2 }}
-      </li>
-    {% empty %}
-      <li>Nenhum aluno cadastrado.</li>
-    {% endfor %}
-  </ul>
+ 
 </body>
 </html>
